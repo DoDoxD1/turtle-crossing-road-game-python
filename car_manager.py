@@ -16,7 +16,6 @@ class CarManager(Turtle):
         super().__init__()
         self.cars = []
         self.hideturtle()
-        self.game_is_on = True
         self.cars_speed = STARTING_MOVE_DISTANCE
 
     def make_car(self):
@@ -37,7 +36,7 @@ class CarManager(Turtle):
     def detect_collision(self, player):
         for car in self.cars:
             if car.distance(player) < 20:
-                self.game_is_on = False
+                return True
 
     def increase_speed(self):
         self.cars_speed += MOVE_INCREMENT
