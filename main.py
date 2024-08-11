@@ -11,6 +11,9 @@ screen.setup(width=600, height=600)
 screen.title("Turtle Crossing the Road")
 screen.tracer(0)
 
+# set up a score board
+scoreboard = Scoreboard()
+
 # set up the player turtle
 player = Player()
 
@@ -32,5 +35,6 @@ while car_manager.game_is_on:
     if player.is_at_finish_line():
         player.goto_start()
         car_manager.increase_speed()
+        scoreboard.update_scoreboard()
 
 screen.exitonclick()

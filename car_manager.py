@@ -7,6 +7,7 @@ MOVE_INCREMENT = 10
 RANDOM_Y = [-200, -150, -100, -50, 0, 50, 100, 150, 200]
 SHAPE = "square"
 HEADING = 180
+CAR_FREQUENCY = 6
 
 
 class CarManager(Turtle):
@@ -15,12 +16,11 @@ class CarManager(Turtle):
         super().__init__()
         self.cars = []
         self.hideturtle()
-        self.car_frequency = 10
         self.game_is_on = True
         self.cars_speed = STARTING_MOVE_DISTANCE
 
     def make_car(self):
-        if random.randint(0, self.car_frequency) == 1:
+        if random.randint(0, CAR_FREQUENCY) == 1:
             car = Turtle()
             car.shape(SHAPE)
             car.shapesize(stretch_wid=1, stretch_len=2)
