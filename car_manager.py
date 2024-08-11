@@ -16,6 +16,8 @@ class CarManager(Turtle):
         self.cars = []
         self.hideturtle()
         self.car_frequency = 10
+        self.game_is_on = True
+        self.cars_speed = STARTING_MOVE_DISTANCE
 
     def make_car(self):
         if random.randint(0, self.car_frequency) == 1:
@@ -30,9 +32,12 @@ class CarManager(Turtle):
 
     def move(self):
         for car in self.cars:
-            car.forward(STARTING_MOVE_DISTANCE)
+            car.forward(self.cars_speed)
 
     def detect_collision(self, player):
         for car in self.cars:
             if car.distance(player) < 20:
-                print("collision")
+                self.game_is_on = False
+
+    def increase_speed(self):
+        self.cars_speed += MOVE_INCREMENT

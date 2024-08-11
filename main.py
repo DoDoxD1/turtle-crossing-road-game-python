@@ -23,12 +23,14 @@ screen.onkey(key="Up", fun=player.move)
 car_manager = CarManager()
 
 # checking if game is still on
-game_is_on = True
-while game_is_on:
+while car_manager.game_is_on:
     time.sleep(0.1)
     screen.update()
     car_manager.make_car()
     car_manager.move()
     car_manager.detect_collision(player)
+    if player.is_at_finish_line():
+        player.goto_start()
+        car_manager.increase_speed()
 
 screen.exitonclick()
